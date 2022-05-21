@@ -1,7 +1,6 @@
 require 'colorize'
 
 class Game
-
   def initialize; end
 
   def welcome
@@ -11,19 +10,42 @@ class Game
     chosen by the Codemaker. Bear in mind that duplicates are allowed.\n
 - For each guess you make (if not correct) the Codemaker will give you feedback
   on how close or far your guess was.
-  
+
     # If a color you guessed is present in the code, but not in the right place
     it will be represented with a '○'\n
     # Otherwise if a color is both correct and in the right place, you will see
     a '●'
-  
+
 - You win if you guess the secret code in 12 tries or less!"
   end
 
-  def player_start?()
+  def player_continues?
     puts "\nPress any key to play, or 'q' to quit\n\n".yellow
     user_key = gets.chomp
     user_key != 'q'
   end
 
+  def play(cmaker, cbreaker)
+    cmaker.generate_code
+
+    while cbreaker.tries_left?
+      cbreaker.set_guess
+
+      return win if cmaker.guess_correct?(cbreaker)
+
+      cmaker.update_feedback(cbreaker)
+
+      cmaker.show_feedback
+    end
+
+    lose
+  end
+
+  def win
+    puts 'You broke the code!'
+  end
+
+  def lose
+    puts 'No more tries left!'
+  end
 end

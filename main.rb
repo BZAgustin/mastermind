@@ -1,11 +1,11 @@
 require './game'
 require './codemaker'
+require './codebreaker'
 
 game = Game.new
 maker = Codemaker.new
+breaker = Codebreaker.new
 
 game.welcome
 
-maker.generate_code
-
-maker.print_code
+game.play(maker, breaker)
