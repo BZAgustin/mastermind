@@ -33,6 +33,8 @@ class Game
   end
 
   def play(cmaker, cbreaker)
+    welcome
+
     return unless player_continues?
 
     loop do
@@ -46,7 +48,7 @@ class Game
 
         cmaker.update_feedback(cbreaker)
 
-        puts "Guess: #{print_guess(cbreaker)} | Hint: #{cmaker.show_feedback}"
+        puts "Guess: #{print_guess(cbreaker)} | Hint: #{cmaker.show_feedback} | CODE: #{cmaker.read_code}"
       end
 
       lose(cmaker)

@@ -44,6 +44,8 @@ class Codemaker
           @feedback.unshift('●')
           temp_code[index] = nil
         else
+          next if temp_code[index + 1..].any?(num)
+
           @feedback.push('○')
           temp_code[temp_code.index(num)] = nil
         end
