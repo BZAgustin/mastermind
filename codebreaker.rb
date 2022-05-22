@@ -42,4 +42,8 @@ class Codebreaker
   def tries_left?
     @lives.positive?
   end
+
+  def reset_lives
+    @lives = 12
+  end
 end

@@ -17,6 +17,10 @@ class Codemaker
     end
   end
 
+  def read_code
+    @code
+  end
+
   def guess_correct?(cbreaker)
     cbreaker.guess == @code
   end
@@ -32,19 +36,22 @@ class Codemaker
 
   def update_feedback(cbreaker)
     @feedback = []
+    temp_code = Marshal.load(Marshal.dump(read_code))
 
     cbreaker.guess.each_with_index do |num, index|
-      if @code.any?(num)
-        if @code[index] == num
+      if temp_code.any?(num)
+        if temp_code[index] == num
           @feedback.unshift('●')
+          temp_code[index] = nil
         else
           @feedback.push('○')
+          temp_code[temp_code.index(num)] = nil
         end
       end
     end
   end
 
   def show_feedback
-    puts "Feedback: <#{@feedback.join(' ')}>"
+    @feedback.join(' ')
   end
 end
