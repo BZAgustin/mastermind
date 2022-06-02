@@ -1,11 +1,6 @@
 # frozen_string_literal: true
 
 require './game'
-require './codemaker'
-require './codebreaker'
+require 'colorize'
 
-game = Game.new
-maker = Codemaker.new
-breaker = Codebreaker.new
-
-game.play(maker, breaker)
+Game.new.play
