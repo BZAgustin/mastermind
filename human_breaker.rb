@@ -15,7 +15,7 @@ class HumanBreaker
     @code = random_digits.map(&:to_s)
   end
 
-  def turn_sequence
+  def player_sequence
     puts 'A master code has been generated. You have 12 tries to break it, good luck!'
     player_turn
     player_game_over(code, guess)
@@ -39,13 +39,13 @@ class HumanBreaker
 
   def set_guess
     guess = gets.chomp.split('')
-    return guess if guess_valid?(guess)
+    return guess if valid?(guess)
 
     puts 'Invalid input. Try again!'
     set_guess
   end
 
-  def guess_valid?(input)
+  def valid?(input)
     input.each do |item|
       return false if item.to_i < 1 || item.to_i > 6 ||
                       item.nil? || input.length < 4 ||

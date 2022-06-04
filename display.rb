@@ -20,6 +20,6 @@ module Display
     feedback = []
     right_numbers.times { feedback.push('○') }
     exact_matches.times { feedback.unshift('●') }
-    puts "Hint: #{feedback.join(' ')}"
+    puts " | Hint: #{feedback.join(' ')}"
   end
 end

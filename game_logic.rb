@@ -43,10 +43,21 @@ module GameLogic
     code == guess
   end
 
+  def valid?(input)
+    input.each do |item|
+      return false if item.to_i < 1 || item.to_i > 6 ||
+                      item.nil? || input.length < 4 ||
+                      input.length > 4
+    end
+    true
+  end
+
   def play_again
+    sleep(1)
+
     puts "\nDo you want to play again? (Press Y to play, or any other key to quit)"
     again = gets.chomp
-    puts 'See ya!' if again.downcase != 'y'
+    puts "\nSee ya!" if again.downcase != 'y'
     Game.new.play if again.downcase == 'y'
   end
 end

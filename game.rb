@@ -2,6 +2,7 @@
 
 require './welcome'
 require './human_breaker'
+require './computer_breaker'
 
 # holds the main methods to play the game
 class Game
@@ -28,8 +29,11 @@ class Game
 
   def select_breaker
     breaker = HumanBreaker.new
-    breaker.turn_sequence
+    breaker.player_sequence
   end
 
-  def select_maker; end
+  def select_maker
+    breaker = ComputerBreaker.new
+    breaker.computer_sequence
+  end
 end
