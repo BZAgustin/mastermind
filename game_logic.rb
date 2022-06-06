@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Codebreaker and Codemaker shared logic
 module GameLogic
   def compare(code, guess)
     temp_code = code.clone

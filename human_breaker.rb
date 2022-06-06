@@ -3,7 +3,7 @@
 require './display'
 require './game_logic'
 
-# codebreaker mode
+# Codebreaker mode
 class HumanBreaker
   attr_reader :code, :guess, :right, :exact
 

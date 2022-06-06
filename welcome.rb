@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# welcome message and instructions
+# Welcome message and instructions
 module Welcome
   def welcome
     <<-HEREDOC

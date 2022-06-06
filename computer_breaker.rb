@@ -3,6 +3,7 @@
 require './display'
 require './game_logic'
 
+# Codemaker mode
 class ComputerBreaker
   attr_reader :numbers, :code, :guess, :right, :exact, :total_matches, :final_combinations
 

@@ -4,7 +4,7 @@ require './welcome'
 require './human_breaker'
 require './computer_breaker'
 
-# holds the main methods to play the game
+# Holds the main methods to play the game
 class Game
   include Welcome
 

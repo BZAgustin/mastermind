@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'colorize'
-
+# For displaying colored numbers and feedback
 module Display
   def digit_colors(digit)
     { '1' => "\e[0;30;41m 1 \e[0m ",
