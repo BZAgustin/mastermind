@@ -4,8 +4,8 @@ module GameLogic
   def compare(code, guess)
     temp_code = code.clone
     temp_guess = guess.clone
-    @right = right_numbers(temp_code, temp_guess)
     @exact = exact_matches(temp_code, temp_guess)
+    @right = right_numbers(temp_code, temp_guess)
     @total_matches = right + exact
   end
 

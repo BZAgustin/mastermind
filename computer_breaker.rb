@@ -4,7 +4,7 @@ require './display'
 require './game_logic'
 
 class ComputerBreaker
-  attr_reader :numbers, :code, :guess, :right, :exact, :total_matches, :final_combinations, :previous_guesses
+  attr_reader :numbers, :code, :guess, :right, :exact, :total_matches, :final_combinations
 
   include Display
   include GameLogic
@@ -13,7 +13,6 @@ class ComputerBreaker
     @numbers = %w[1 2 3 4 5 6].shuffle
     @guess = []
     @final_combinations = []
-    @previous_guesses = []
   end
 
   def computer_sequence
@@ -40,10 +39,15 @@ class ComputerBreaker
 
   def computer_first_turn
     think
+
     print 'Turn N° 1: '
+
     4.times { guess.push(numbers[0]) }
+
     numbers.delete_at(0)
+
     compare(guess, code)
+
     computer_game_over(code, guess) if solved?(code, guess)
   end
 
@@ -51,11 +55,11 @@ class ComputerBreaker
     turn = 2
     while turn <= 12
       think
+
       print "\nTurn N° #{turn}: "
       update_guess(code, guess) if total_matches < 4
 
       set_final_combinations if total_matches == 4 && final_combinations == []
-
 
       select_combination if total_matches == 4 && final_combinations != []
 
@@ -82,7 +86,6 @@ class ComputerBreaker
     selection = final_combinations.sample
     final_combinations.delete(selection)
     @guess = selection
-    previous_guesses.push(guess.clone)
   end
 
   def set_final_combinations
