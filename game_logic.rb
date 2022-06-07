@@ -45,6 +45,8 @@ module GameLogic
   end
 
   def valid?(input)
+    return false if input.nil? || input == []
+
     input.each do |item|
       return false if item.to_i < 1 || item.to_i > 6 ||
                       item.nil? || input.length < 4 ||

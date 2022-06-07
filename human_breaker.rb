@@ -28,8 +28,6 @@ class HumanBreaker
       @guess = set_guess
       turn += 1
 
-      break if guess[0].downcase == 'q'
-
       show_number(guess)
       break if solved?(code, guess)
 
@@ -38,20 +36,11 @@ class HumanBreaker
   end
 
   def set_guess
-    guess = gets.chomp.split('')
+    guess = gets.chomp.split(//)
     return guess if valid?(guess)
 
     puts 'Invalid input. Try again!'
     set_guess
-  end
-
-  def valid?(input)
-    input.each do |item|
-      return false if item.to_i < 1 || item.to_i > 6 ||
-                      item.nil? || input.length < 4 ||
-                      input.length > 4
-    end
-    true
   end
 
   def end_turn
